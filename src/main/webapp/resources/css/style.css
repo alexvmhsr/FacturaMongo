@@ -1,0 +1,292 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 6, 2016, 8:38:29 AM
+    Author     : PabloA
+*/
+
+.header-wrap {
+    width: 100%;
+    height: 170px;
+    background-color: #111;
+    background-repeat:no-repeat;
+    background-size: inherit;
+    opacity: 0.9;
+    background-position: center center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    position: relative;
+}
+
+#header {
+    height: 40px;
+
+    text-align: left;
+    background-repeat: repeat-x;
+    background: #CFD8DC;
+    background-color: #CFD8DC;
+}
+
+.banner{
+    font-family:  Verdana, Geneva, sans-serif;
+    font-size: small;
+    text-align: center;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family:  Verdana, Geneva, sans-serif;
+    font-size: small;
+    background-image: url("../img/Background.jpg") !important;
+    background-repeat: repeat;
+}
+.main_content{
+    width: 1000px;
+    min-height:    80vh;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.centered_content {
+    display: flex;
+
+}
+.centered_parent {
+    position: relative;
+}
+.centered_child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.center_inline{
+
+    text-align: center;
+}
+.center_block{
+    margin: 0 auto;
+
+}
+.no_border{
+
+    border: none;
+}
+.panel-grid-no-border.ui-panelgrid>*>tr,
+.panel-grid-no-border.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+.login-form-input{
+    width: 300px; 
+    padding: 10px;   
+}
+.login-form-container{
+    width: 100%; 
+    text-align: center;
+    padding: 32px;   
+}
+
+.login-panel-container{
+    width: 100%; 
+    text-align: center !important;
+    padding: 32px;   
+}
+.parent-element {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.element {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.absolute-center {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+.parent {
+    display: table;
+    /* optional, just for the demo */
+    height: 300px;
+    background: yellow;  
+}
+.child {
+    display: table-cell;
+    vertical-align: middle;
+    /* optional, just for the demo */
+    background: red;	
+}
+.background-primary-color{
+    background: #009345;
+    /*background-color: lightblue;*/
+}
+.background-secondary-color{
+    background: #0071BB;
+}
+.centeredMenuBar.ui-menubar {
+    /*text-align: center;*/
+
+    height: 50px;
+
+    border-radius: 0;
+    /*background: #0071BB;*/
+
+}
+
+.centeredMenuBar .ui-menu-list {
+    /*display: inline-block;*/
+    width: 100px;
+    margin-left: auto;
+    margin-right:  auto;
+    margin-top: 10px;
+
+}
+.rigth_text{
+    text-align: right;
+
+}
+.negrita{
+    font-weight: bold;
+}
+.colored {
+
+    color: #ff0000;
+
+}
+/*div {
+    -webkit-animation: mymove 5s 1;  Chrome, Safari, Opera 
+    animation: mymove 5s 1;
+}*/
+/* Chrome, Safari, Opera */
+/*@-webkit-keyframes mymove {
+    
+    0%  {background-color:yellow; bottom: -200px; top:0px;}
+    100% {background-color:red; left:0px; top:0px;}
+}
+
+ Standard syntax 
+@keyframes mymove {
+    100%  {background-color:yellow; bottom: -200px;}
+    
+}*/
+.footer{
+    background:#f5f5f5;
+    padding: 40px 20px;
+    opacity: 0.9;
+    background-position: center center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+
+    bottom: 0 !important;
+}
+.footer-left{
+    float:left;
+    width:50%;
+}
+.footer-right{
+    float:right;
+    width:23%;
+}
+.footer-right p{
+    float:left;
+    width:36%;
+    margin: 8px 0 0 0;
+    font-size:14px;
+    color:#29323c;
+}
+.footer-right ul{
+    margin:0;
+    padding:0;
+    float:left;
+}
+.footer-right ul li{
+    display:inline-block;
+    padding-left:3px;
+}
+.footer-right ul li a.fb{
+    background:url("../img/21.png") no-repeat 0px 0px;
+    width:35px;
+    height:35px;
+    display:block;
+}
+.footer-right ul li a.fb:hover{
+    background:url("../img/icons.png") no-repeat 0px 0px;
+    transition:.5s all;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    -o-transition:.5s all;
+    -ms-transition:.5s all;
+    transform: rotate(360deg);
+}
+.footer-right ul li a.twitt{
+    background:url("../img/21.png") no-repeat -44px 0px;
+    width:35px;
+    height:35px;
+    display:block;
+}
+.footer-right ul li a.twitt:hover{
+    background:url("../img/icons.png") no-repeat -44px 0px;
+    transition:.5s all;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    -o-transition:.5s all;
+    -ms-transition:.5s all;
+    transform: rotate(360deg);
+}
+.footer-right ul li a.google{
+    background:url("../img/21.png") no-repeat -88px 0px;
+    width:35px;
+    height:35px;
+    display:block;
+}
+.footer-right ul li a.google:hover{
+    background:url("../img/icons.png") no-repeat -88px 0px;
+    transition:.5s all;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    -o-transition:.5s all;
+    -ms-transition:.5s all;
+    transform: rotate(360deg);
+}
+.footer-right ul li a.drib{
+    background:url("../img/21.png") no-repeat -132px 0px;
+    width:35px;
+    height:35px;
+    display:block;
+}
+.footer-right ul li a.drib:hover{
+    background:url("../img/icons.png") no-repeat -132px 0px;
+    transition:.5s all;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    -o-transition:.5s all;
+    -ms-transition:.5s all;
+    transform: rotate(360deg);
+}
+.footer-left img{
+    float:left;
+}
+.copyright{
+    text-align:center;
+
+}
+.copyright p{
+    font-size:13px;
+    margin: 0;
+    color:#29323c;
+}
+.copyright p a{
+    color:#29323c;
+    text-decoration:none;
+}
+.copyright p a:hover{
+    text-decoration:underline;
+}

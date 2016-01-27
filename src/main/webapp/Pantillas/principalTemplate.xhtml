@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+  
+        <h:head>
+
+            <!-- load other css, js and resources -->	
+            <link href="#{facesContext.externalContext.requestContextPath}/resources/css/style.css" rel="stylesheet"/>
+            <link rel="shortcut icon" type="image/x-icon" href="#{facesContext.externalContext.requestContextPath}/resources/img/favicon.ico"/>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Menu Principal</title>
+            </f:facet>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <h:outputStylesheet name="./css/default.css"/>
+            <h:outputStylesheet name="./css/cssLayout.css"/>
+
+        </h:head>
+
+        <h:body styleClass="body" id="principal_forn">
+
+           
+
+            <div style="min-height: 750px; width: 100%" >
+
+
+                <div id="left" style="min-height: 750px; width: 20%; background-color: #ffffff; opacity: 0.9" >
+                    <h:form id="menu_form">
+                        <p:growl autoUpdate="true"/>
+                        <p:panel header="Menú" >
+                            <p:panelMenu style="width:auto; height: auto;">
+                                <p:submenu label="Bienvenido  #{loginBean.nombre}"> 
+                                    <p:menuitem value="Home"  icon="ui-icon-home" outcome="/Principal" />
+                                    <p:menuitem value="Cerrar Sesion" actionListener="#{loginBean.cerrarSession()}" 
+                                                oncomplete="logout(xhr, status, args)" icon="ui-icon-key"/>                                    
+
+                                </p:submenu>
+                                <p:submenu label="Administrar">
+                                    <p:menuitem value="Clientes"   ajax="true" icon="ui-icon-person" outcome="/Adm_Cli"/>                                       
+                                    <p:menuitem value="Usuario Web"   ajax="true" icon="ui-icon-signal-diag" outcome="/Adm_Usu"/>
+
+                                </p:submenu>
+                                <p:separator />
+                                <p:submenu label="Divisiones" >
+                                    <p:menuitem value="Tipo de Mobiliario" icon="ui-icon-transferthick-e-w" outcome="/Div_TM"/>  
+                                    <p:menuitem value="Mobiliario" icon="ui-icon-suitcase" outcome="/Div_Mob"/> 
+                                    <p:menuitem value="Alimentación" icon="ui-icon-suitcase" outcome="/Div_Ali"/>
+                                    <p:menuitem value="Personal"   ajax="true" icon="ui-icon-search" outcome="/Div_Ser"/>
+                                </p:submenu>
+
+                                <p:separator />
+                                <p:submenu label="Organización">
+                                    <p:menuitem value="Tipo de Evento"   ajax="true" icon="ui-icon-pin-s" outcome="/Org_TE"/>
+                                    <p:menuitem value="Evento"   ajax="true" icon="ui-icon-pin-s" outcome="/Org_Eve"/>
+                                    <p:menuitem value="Calendario" icon="ui-icon-calendar" outcome="/Org_Cal"/>
+                                </p:submenu>
+                                <p:separator />
+                                <p:submenu label="Catering">
+                                    <p:menuitem value="Paquete"   ajax="true" icon="ui-icon-contact" outcome="/Cat_Paq"/>
+                                    <p:menuitem value="Factura"   ajax="true" icon="ui-icon-cart"  outcome="/Cat_Fac"/>
+                                </p:submenu>                                              
+                            </p:panelMenu>
+                        </p:panel>
+                        <p:confirmDialog global="true">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                        <p:growl id="messages" showDetail="true" life="6000" autoUpdate="true" />    
+
+                    </h:form>
+
+                </div>
+
+                <div class="left_content" id="right" style="opacity: 0.9; min-height: 750px; width: 79%;">
+
+                    <ui:insert name="principal"/>
+
+                </div>
+
+            </div>
+            <div class="footer" style="bottom: 0 !important;">
+
+
+                <div class="footer-right">
+                    <p>Redes Sociales</p>
+                    <ul>
+                        <li><a class="fb" href="https://www.facebook.com/Pablo.Castiel"></a></li>
+                        <li><a class="twitt" href="#"></a></li>
+                        <li><a class="google" href="#"></a></li>
+                        <li><a class="drib" href="#"></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="copyright">
+                    <p:outputLabel style="font-size: small" value="Universidad de las Fuerzas Armadas - ESPE"/>
+                </div>
+
+            </div>   
+
+        </h:body>
+        <script type="text/javascript">
+            //<![CDATA[
+            function manejarLogin(xhr, status, args) {
+                if (!args.validationFailed && args.estaLogeado) {
+                    setTimeout(function () {
+                        window.location = args.view;
+                    }, 500);
+                }
+            }
+//]]>
+        </script>
+
+        <script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                currentText: 'Fecha actual',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
+        </script>
+        <style type="text/css">
+            .value {
+                text-align: center;
+                width: 700px;
+                margin: 40px;
+            }
+        </style>
+ 
+</html>
