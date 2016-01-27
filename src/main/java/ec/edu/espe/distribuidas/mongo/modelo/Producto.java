@@ -17,14 +17,14 @@ public class Producto {
     private String nombre;
     private String detalle;
     private Integer cantidad;
-    private Double valor_Unitario;
-    private Double valor_Total;
+    private Float valor_Unitario;
+    private Float valor_Total;
     
       public Producto() {
         super();
     }
 
-    public Producto(String nombre, String detalle, Integer cantidad, Double valor_Unitario, Double valor_Total) {
+    public Producto(String nombre, String detalle, Integer cantidad, Float valor_Unitario, Float valor_Total) {
         this.nombre = nombre;
         this.detalle = detalle;
         this.cantidad = cantidad;
@@ -50,19 +50,19 @@ public class Producto {
         this.detalle = detalle;
     }
 
-    public Double getValor_Unitario() {
+    public Float getValor_Unitario() {
         return valor_Unitario;
     }
 
-    public void setValor_Unitario(Double valor_Unitario) {
+    public void setValor_Unitario(Float valor_Unitario) {
         this.valor_Unitario = valor_Unitario;
     }
 
-    public Double getValor_Total() {
+    public Float getValor_Total() {
         return valor_Total;
     }
 
-    public void setValor_Total(Double valor_Total) {
+    public void setValor_Total(Float valor_Total) {
         this.valor_Total = valor_Total;
     }
 
