@@ -19,7 +19,8 @@
                     <p:menuitem value="Factura" icon="/resources/img/factura.png" outcome="factura"/>
                 </p:stack>
                 <p:commandButton value="Ver" actionListener="#{reportesBean.mostarReporteProductos()}"/>
-            <p:dataTable id="tabla_reporteVentas" class="center_block"
+
+                <p:dataTable id="tabla_reporteVentas" class="center_block"
                              var="agregacionVentas" 
                              value="#{reportesBean.productosSumarizados}"                              
                              rows="6"
@@ -28,18 +29,15 @@
                              emptyMessage="No hay Datos"                                                          
                              style="width: 500px;"
                              >                    
-                     <p:column headerText="Producto">
+                    <p:column headerText="Producto">
                         <h:outputText value="#{agregacionProducto.nombre}" />
                     </p:column>
                     <p:column headerText="Monto">
                         <h:outputText value="#{agregacionProducto.total}" />
                     </p:column>                
                 </p:dataTable>
-                
-              
-        
-        
-        </h:form>
-            </p:panel>
+
+            </h:form>
+        </p:panel>
     </h:body>
 </html>

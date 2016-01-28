@@ -36,7 +36,7 @@ public class ReportesBean implements Serializable {
      */
 
     
-    private ReporteServicio reporteServicio;
+    private ReporteServicio reporteServicio=new ReporteServicio();
     private List<AgregacionProducto> productosSumarizados;
     private List<AgregacionVentas> ventasSumarizados;
     private List<AgregacionClientes> clientesSumarizados;
@@ -45,9 +45,9 @@ public class ReportesBean implements Serializable {
 
    
  
-    
-    public void ReportesBean(){
-        
+    @PostConstruct
+    public void reportesBean()
+    {        
         this.ventasSumarizados = reporteServicio.mostarReporteVentas();
         this.clientesSumarizados = reporteServicio.mostarReporteClientes();
         this.productosSumarizados = reporteServicio.mostarReporteProductos();
