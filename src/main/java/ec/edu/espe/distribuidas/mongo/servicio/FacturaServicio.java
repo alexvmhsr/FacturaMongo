@@ -25,6 +25,7 @@ public class FacturaServicio {
 
     public void ingresarFactura(String cedula, List<Producto> producto, Date fecha) {
         PersistenceManager persistenceManager = new PersistenceManager();
+        
         Query<Persona> q = persistenceManager.context().createQuery(Persona.class).
                 filter("Cedula", cedula);
         Persona persona = (Persona) q.get();
@@ -49,12 +50,12 @@ public class FacturaServicio {
         persistenceManager.context().save(factura);        
     }
     
-    public Persona buscarCliente(String cedula){
+    public Cliente buscarCliente(String cedula){
         PersistenceManager persistenceManager = new PersistenceManager();
-        Query<Persona> q = persistenceManager.context().createQuery(Persona.class).
-                filter("Cedula", cedula);
-        Persona persona = (Persona) q.get();
-        return persona;
+        Query<Cliente> q = persistenceManager.context().createQuery(Cliente.class).
+                filter("cedula",cedula);
+        Cliente cliente = q.get();
+        return cliente;
     }
     
     public List<Producto> verProductos(){
@@ -67,16 +68,32 @@ public class FacturaServicio {
     
     public Cliente clientePorCedula(String cedula)
     {
-        return new Cliente("123","carlos","M","2333167");
+        Cliente cliente=buscarCliente(cedula);
+        if(cliente!=null)
+        {
+            return cliente;
+        }
+        else
+        {
+            return null;
+        }
     }
     
     public Producto productoPorCodigo(String codigo)
     {
-        return new Producto("123","lapiz",1.23f);
+        List<Producto> lista=verProductos();
+        for (Producto producto : lista) {
+            if(producto.getCodigo().equals(codigo))
+            {
+                return producto;
+            }
+        }
+        return null;
     }
     
     public void grabarFactura(Factura factura)
     {
-        //poner codigo para grabar
+        PersistenceManager persistence=new PersistenceManager();
+        persistence.context().save(factura);
     }   
 }

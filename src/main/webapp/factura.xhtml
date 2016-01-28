@@ -18,16 +18,17 @@ and open the template in the editor.
     <h:body>
         <h:form id="formFactura">
             <p:stack  icon="/resources/img/maleta.png" expanded="true">
-                <p:menuitem value="Reporte 1" icon="/resources/img/reporte.png" url="#"/>
-                <p:menuitem value="Reporte 2" icon="/resources/img/reporte.png" url="#"/>
-                <p:menuitem value="Factura" icon="/resources/img/factura.png" url="#"/>
+                <p:menuitem value="Reporte1" icon="/resources/img/reporte.png" outcome="reporte1"/>
+                <p:menuitem value="Reporte2" icon="/resources/img/reporte.png" outcome="reporte1"/>
+                <p:menuitem value="Reporte3" icon="/resources/img/reporte.png" outcome="reporte1"/>
+                <p:menuitem value="Factura" icon="/resources/img/factura.png" outcome="factura"/>
             </p:stack>
             <p:growl id="growl" showDetail="true" sticky="true" />  
             <div style="text-align: center">
                 <p:panel header="Factura" styleClass="cuerpoFactura">
                     <div style="text-align: left">
                         <p:outputLabel value="Cedula:  "/>
-                        <p:inputText/>
+                        <p:inputText value="#{facturaMb.cedula}"/>
                         <p:outputLabel value="  "/>
                         <p:commandButton actionListener="#{facturaMb.buscarCliente()}" value="Buscar" icon="ui-icon-search" update="detalleCliente,growl"/>
                     </div>
@@ -51,7 +52,7 @@ and open the template in the editor.
                     <p:panel id="detalleProducto"  styleClass="detalleCliente" header="AgregarProducto"  >
                         <p:panelGrid columns="10" styleClass="panelNoBorder">
                             <p:outputLabel value="Codigo"/>
-                            <p:inputText  style="width: 80px" />
+                            <p:inputText value="#{facturaMb.codigoProducto}" style="width: 80px" />
                             <p:commandButton actionListener="#{facturaMb.buscarProducto()}" icon="ui-icon-search" update="detalleProducto,growl"/>
 
                             <p:outputLabel value="Nombre"/>

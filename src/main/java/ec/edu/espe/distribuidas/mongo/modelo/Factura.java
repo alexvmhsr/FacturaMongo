@@ -22,14 +22,15 @@ import org.mongodb.morphia.annotations.Reference;
  *
  * @author carlo
  */
+@Entity(value = "factura")
 public class Factura 
 {
+    @Reference
     private Cliente cliente;
     private Date fecha;
-    private Float total;
+    private Float total;    
     
-    
-    
+    @Embedded
     private List<DetalleProducto> detalles;
 
     public Factura(Date fecha, Float total) {

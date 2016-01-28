@@ -14,7 +14,6 @@ import org.mongodb.morphia.annotations.Embedded;
  * @author PabloA
  */
 @Embedded
-
 public class Persona extends BaseEntity {
     private String Nombre;
     private String Cedula;

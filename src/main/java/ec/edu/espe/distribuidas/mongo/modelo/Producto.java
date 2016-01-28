@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.distribuidas.mongo.modelo;
 
+import ec.edu.espe.distribuidas.mongo.persistence.BaseEntity;
 import java.math.BigDecimal;
 import org.mongodb.morphia.annotations.Embedded;
 
@@ -12,7 +13,8 @@ import org.mongodb.morphia.annotations.Embedded;
  *
  * @author PabloA
  */
-public class Producto 
+@Embedded
+public class Producto extends BaseEntity
 {
     private String codigo;
     private String nombre;

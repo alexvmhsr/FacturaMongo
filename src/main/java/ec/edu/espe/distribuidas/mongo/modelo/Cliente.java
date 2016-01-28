@@ -5,11 +5,15 @@
  */
 package ec.edu.espe.distribuidas.mongo.modelo;
 
+import ec.edu.espe.distribuidas.mongo.persistence.BaseEntity;
+import org.mongodb.morphia.annotations.Embedded;
+
 /**
  *
  * @author carlo
  */
-public class Cliente 
+@Embedded
+public class Cliente extends BaseEntity
 {
     private String cedula;
     private String nombre;

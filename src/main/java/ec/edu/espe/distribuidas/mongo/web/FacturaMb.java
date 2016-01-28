@@ -32,6 +32,8 @@ public class FacturaMb implements Serializable {
     private Integer cantidadProducto;
     private Float iva;
     private Float total;
+    private String cedula;
+    private String codigoProducto;
 
     private Factura factura;
 
@@ -47,22 +49,26 @@ public class FacturaMb implements Serializable {
     public void buscarCliente() {
         FacesContext context = FacesContext.getCurrentInstance();
         System.out.println("buscando cliente ...");
-        cliente = servicios.clientePorCedula("123213");
+        cliente = servicios.clientePorCedula(cedula);
+        //System.out.println(cliente);
         if (cliente != null) {
             context.addMessage(null, new FacesMessage("OK", "El usuario se encontro"));
         } else {
             context.addMessage(null, new FacesMessage("ERROR", "El usuario no existe"));
+            cliente=new Cliente();
         }
     }
 
     public void buscarProducto() {
         FacesContext context = FacesContext.getCurrentInstance();
         System.out.println("buscando producto ...");
-        producto = servicios.productoPorCodigo("001");
+        producto = servicios.productoPorCodigo(codigoProducto);
         if (producto != null) {
             context.addMessage(null, new FacesMessage("OK", "El producto se encontro"));
+            
         } else {
             context.addMessage(null, new FacesMessage("ERROR", "El producto no existe"));
+            producto=new Producto();
         }
     }
 
@@ -140,4 +146,21 @@ public class FacturaMb implements Serializable {
         this.total = total;
     }
 
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getCodigoProducto() {
+        return codigoProducto;
+    }
+
+    public void setCodigoProducto(String codigoProducto) {
+        this.codigoProducto = codigoProducto;
+    }
+
+    
 }
