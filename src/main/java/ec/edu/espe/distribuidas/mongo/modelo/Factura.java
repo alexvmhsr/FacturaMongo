@@ -22,8 +22,8 @@ import org.mongodb.morphia.annotations.Reference;
  *
  * @author carlo
  */
-@Entity(value = "factura")
-public class Factura 
+@Entity(value = "Factura")
+public class Factura extends BaseEntity
 {
     @Reference
     private Cliente cliente;

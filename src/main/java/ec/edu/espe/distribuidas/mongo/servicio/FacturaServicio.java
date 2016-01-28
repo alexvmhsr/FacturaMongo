@@ -7,12 +7,8 @@ package ec.edu.espe.distribuidas.mongo.servicio;
 
 import ec.edu.espe.distribuidas.mongo.modelo.Cliente;
 import ec.edu.espe.distribuidas.mongo.modelo.Factura;
-import ec.edu.espe.distribuidas.mongo.modelo.Persona;
 import ec.edu.espe.distribuidas.mongo.modelo.Producto;
 import ec.edu.espe.distribuidas.mongo.persistence.PersistenceManager;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.mongodb.morphia.query.Query;
 
@@ -23,22 +19,8 @@ import org.mongodb.morphia.query.Query;
  */
 public class FacturaServicio {
 
-    public void ingresarFactura(String cedula, List<Producto> producto, Date fecha) {
-        PersistenceManager persistenceManager = new PersistenceManager();
-        
-        Query<Persona> q = persistenceManager.context().createQuery(Persona.class).
-                filter("Cedula", cedula);
-        Persona persona = (Persona) q.get();
-        
-        Factura factura = new Factura();
-        
-		
-		factura.setFecha(fecha);
-		
-	
-        producto = new ArrayList<Producto>();
-        Integer sumatoria;
-        Float total = 0f;
+   
+
 //        for (int i = 0; i < producto.size(); i++) {
 //            total = total+(producto.get(i).getCantidad()* producto.get(i).getValor_Unitario());
 //            
@@ -46,10 +28,7 @@ public class FacturaServicio {
 //        factura.setValorTotal(new BigDecimal(total));
 //        factura.setProductos(producto);
 //        factura.setPersona(persona);
-        
-        persistenceManager.context().save(factura);        
-    }
-    
+
     public Cliente buscarCliente(String cedula){
         PersistenceManager persistenceManager = new PersistenceManager();
         Query<Cliente> q = persistenceManager.context().createQuery(Cliente.class).
@@ -96,4 +75,19 @@ public class FacturaServicio {
         PersistenceManager persistence=new PersistenceManager();
         persistence.context().save(factura);
     }   
+    
+//    public List<String> obtenerReporte3(){
+//        PersistenceManager persistenceManager = new PersistenceManager();
+//        Query<Factura> qfactura = persistenceManager.context().find(Factura.class);
+//        List<Factura> factura =  qfactura.asList();
+//
+//        for (int i = 0; i < factura.size(); i++) {
+//             System.out.println(factura.get(i));
+//                
+//            }
+//            
+//        }
+//               
+//        return factura;
+//    }
 }

@@ -20,7 +20,6 @@ public class PersistenceManager {
 
     private static final Morphia morphia;
     private static final MongoClient mongoClient;
-
     private final Datastore mds;
 
     static {
@@ -44,5 +43,6 @@ public class PersistenceManager {
     public Datastore context() {
         return this.mds;
     }
+     
 
 }

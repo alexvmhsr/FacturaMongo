@@ -5,7 +5,6 @@
  */
 package ec.edu.espe.distribuidas.mongo.modelo.start;
 
-import ec.edu.espe.distribuidas.mongo.modelo.Persona;
 import ec.edu.espe.distribuidas.mongo.modelo.Producto;
 import ec.edu.espe.distribuidas.mongo.persistence.PersistenceManager;
 import java.util.List;
@@ -26,12 +25,12 @@ public class TestLIstaProducto {
 //            
 //        }
         
-        PersistenceManager persistenceManager = new PersistenceManager();
-        Query<Persona> q = persistenceManager.context().createQuery(Persona.class).
-                filter("Cedula", "1721712741");
-        Persona persona = (Persona) q.get();
-        
-        
-         System.out.println(persona+"\n");
+//        PersistenceManager persistenceManager = new PersistenceManager();
+//        Query<Persona> q = persistenceManager.context().createQuery(Persona.class).
+//                filter("Cedula", "1721712741");
+//        Persona persona = (Persona) q.get();
+//        
+//        
+//         System.out.println(persona+"\n");
     }
 }

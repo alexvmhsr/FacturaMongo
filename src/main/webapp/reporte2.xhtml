@@ -10,7 +10,7 @@
         <h:outputStylesheet library="css" name="estilo.css"/>
     </h:head>
     <h:body>
-        <p:panel header="Reporte Productos Sumarizados" style="width: 600px;">
+        <p:panel header="Reporte Clientes Sumarizados" style="width: 600px;">
             <h:form>
                 <p:stack  icon="/resources/img/maleta.png" expanded="true">
                     <p:menuitem value="Reporte1" icon="/resources/img/reporte.png" outcome="reporte1"/>
@@ -18,22 +18,22 @@
                     <p:menuitem value="Reporte3" icon="/resources/img/reporte.png" outcome="reporte3"/>
                     <p:menuitem value="Factura" icon="/resources/img/factura.png" outcome="factura"/>
                 </p:stack>
-                <p:commandButton value="Ver" actionListener="#{reportesBean.mostarReporteProductos()}"/>
+                <p:commandButton value="Ver" actionListener="#{reportesBean.mostarReporteClientes()}"/>
             <p:dataTable id="tabla_reporteVentas" class="center_block"
                              var="agregacionVentas" 
-                             value="#{reportesBean.productosSumarizados}"                              
+                             value="#{reportesBean.clientesSumarizados}"                              
                              rows="6"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"                           
                              emptyMessage="No hay Datos"                                                          
                              style="width: 500px;"
                              >                    
-                     <p:column headerText="Producto">
-                        <h:outputText value="#{agregacionProducto.nombre}" />
+                    <p:column headerText="Cliente">
+                        <h:outputText value="#{agregacionCliente.nombre}" />
                     </p:column>
                     <p:column headerText="Monto">
-                        <h:outputText value="#{agregacionProducto.total}" />
-                    </p:column>                
+                        <h:outputText value="#{agregacionCliente.total}" />
+                    </p:column>              
                 </p:dataTable>
                 
               

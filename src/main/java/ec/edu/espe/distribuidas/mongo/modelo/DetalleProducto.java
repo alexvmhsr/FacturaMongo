@@ -5,10 +5,13 @@
  */
 package ec.edu.espe.distribuidas.mongo.modelo;
 
+import org.mongodb.morphia.annotations.Embedded;
+
 /**
  *
  * @author carlo
  */
+@Embedded
 public class DetalleProducto 
 {
     private Producto producto;
@@ -19,6 +22,9 @@ public class DetalleProducto
         this.producto = producto;
         this.cantidad = cantidad;
         this.subtotal = cantidad*producto.getPrecio();
+    }
+
+    public DetalleProducto() {
     }
     
 
