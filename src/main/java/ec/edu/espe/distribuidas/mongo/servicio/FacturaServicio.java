@@ -5,12 +5,12 @@
  */
 package ec.edu.espe.distribuidas.mongo.servicio;
 
+import ec.edu.espe.distribuidas.mongo.modelo.Cliente;
 import ec.edu.espe.distribuidas.mongo.modelo.Factura;
 import ec.edu.espe.distribuidas.mongo.modelo.Persona;
 import ec.edu.espe.distribuidas.mongo.modelo.Producto;
 import ec.edu.espe.distribuidas.mongo.persistence.PersistenceManager;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,13 +38,13 @@ public class FacturaServicio {
         producto = new ArrayList<Producto>();
         Integer sumatoria;
         Float total = 0f;
-        for (int i = 0; i < producto.size(); i++) {
-            total = total+(producto.get(i).getCantidad()* producto.get(i).getValor_Unitario());
-            
-        }
-        factura.setValorTotal(new BigDecimal(total));
-        factura.setProductos(producto);
-        factura.setPersona(persona);
+//        for (int i = 0; i < producto.size(); i++) {
+//            total = total+(producto.get(i).getCantidad()* producto.get(i).getValor_Unitario());
+//            
+//        }
+//        factura.setValorTotal(new BigDecimal(total));
+//        factura.setProductos(producto);
+//        factura.setPersona(persona);
         
         persistenceManager.context().save(factura);        
     }
@@ -64,4 +64,19 @@ public class FacturaServicio {
         
         return producto;
     }
+    
+    public Cliente clientePorCedula(String cedula)
+    {
+        return new Cliente("123","carlos","M","2333167");
+    }
+    
+    public Producto productoPorCodigo(String codigo)
+    {
+        return new Producto("123","lapiz",1.23f);
+    }
+    
+    public void grabarFactura(Factura factura)
+    {
+        //poner codigo para grabar
+    }   
 }

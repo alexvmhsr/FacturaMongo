@@ -12,27 +12,30 @@ import org.mongodb.morphia.annotations.Embedded;
  *
  * @author PabloA
  */
-@Embedded
-public class Producto {
+public class Producto 
+{
+    private String codigo;
     private String nombre;
-    private String detalle;
-    private Integer cantidad;
-    private Float valor_Unitario;
-    private Float valor_Total;
-    
-      public Producto() {
-        super();
+    private Float precio;
+
+    public Producto(String codigo, String nombre, Float precio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
     }
 
-    public Producto(String nombre, String detalle, Integer cantidad, Float valor_Unitario, Float valor_Total) {
-        this.nombre = nombre;
-        this.detalle = detalle;
-        this.cantidad = cantidad;
-        this.valor_Unitario = valor_Unitario;
-        this.valor_Total = valor_Total;
+    public Producto() {
     }
-      
-      
+    
+    
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
     public String getNombre() {
         return nombre;
@@ -42,44 +45,18 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getDetalle() {
-        return detalle;
+    public Float getPrecio() {
+        return precio;
     }
 
-    public void setDetalle(String detalle) {
-        this.detalle = detalle;
-    }
-
-    public Float getValor_Unitario() {
-        return valor_Unitario;
-    }
-
-    public void setValor_Unitario(Float valor_Unitario) {
-        this.valor_Unitario = valor_Unitario;
-    }
-
-    public Float getValor_Total() {
-        return valor_Total;
-    }
-
-    public void setValor_Total(Float valor_Total) {
-        this.valor_Total = valor_Total;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setPrecio(Float precio) {
+        this.precio = precio;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "nombre=" + nombre + ", detalle=" + detalle + ", cantidad=" + cantidad + ", valor_Unitario=" + valor_Unitario + ", valor_Total=" + valor_Total + '}';
+        return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + '}';
     }
-
-   
-  
+    
     
 }

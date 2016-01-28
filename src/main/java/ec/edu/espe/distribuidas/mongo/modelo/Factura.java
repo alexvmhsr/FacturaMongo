@@ -7,6 +7,7 @@ package ec.edu.espe.distribuidas.mongo.modelo;
 
 import ec.edu.espe.distribuidas.mongo.persistence.BaseEntity;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.mongodb.morphia.annotations.Embedded;
@@ -17,31 +18,51 @@ import org.mongodb.morphia.annotations.Reference;
  *
  * @author PabloA
  */
-
-@Entity(value = "factura")
-public class Factura extends BaseEntity {
+/**
+ *
+ * @author carlo
+ */
+public class Factura 
+{
+    private Cliente cliente;
     private Date fecha;
-    private BigDecimal valorTotal;
+    private Float total;
     
-    @Embedded
-    private List<Producto> productos;
     
-    @Reference
-    private Persona persona;
+    
+    private List<DetalleProducto> detalles;
 
-    public Factura(Date fecha, BigDecimal valorTotal, List<Producto> productos, Persona persona) {
+    public Factura(Date fecha, Float total) {
         this.fecha = fecha;
-        this.valorTotal = valorTotal;
-        this.productos = productos;
-        this.persona = persona;
+        this.total = total;
+        this.detalles=new ArrayList<DetalleProducto>();
     }
 
-    public Factura() {
-        super();
+    public Factura() 
+    {
+        this.total=0f;
+        this.detalles=new ArrayList<DetalleProducto>();
     }
+    
+    
+    public void agregarDetalle(DetalleProducto detalle)
+    {
+        detalles.add(detalle);
+        this.total+=detalle.getSubtotal();
+        System.out.println(total); 
+   }
+    
+    public Float obtenerIva()
+    {
+        return total*0.12f;
+    }
+    
+    public Float obtenerTotal()
+    {
+        return total*1.12f;
+    }
+    
 
-    
-    
     public Date getFecha() {
         return fecha;
     }
@@ -50,33 +71,35 @@ public class Factura extends BaseEntity {
         this.fecha = fecha;
     }
 
-    public BigDecimal getValorTotal() {
-        return valorTotal;
+    public Float getTotal() {
+        return total;
     }
 
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setTotal(Float total) {
+        this.total = total;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public List<DetalleProducto> getDetalles() {
+        return detalles;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setDetalles(List<DetalleProducto> detalles) {
+        this.detalles = detalles;
     }
 
     @Override
     public String toString() {
-        return "Factura{" + "fecha=" + fecha + ", valorTotal=" + valorTotal + ", productos=" + productos + ", persona=" + persona + '}';
+        return "Factura{" + "fecha=" + fecha + ", total=" + total + ", detalles=" + detalles + '}';
     }
-            
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
+    
+    
 }

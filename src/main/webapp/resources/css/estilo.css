@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27-ene-2016, 15:42:38
+    Author     : carlo
+*/
+
+body
+{
+    background-color: cadetblue;
+    font-size: 13px;
+}
+
+.cuerpoFactura
+{
+    width: 60%;
+    margin: 0px auto;   
+}
+
+.detalleCliente
+{
+    width: 100%;
+    
+}
+
+.panelNoBorder, .panelNoBorder tr, .panelNoBorder td{
+    border: hidden;
+    border-color: white;
+}

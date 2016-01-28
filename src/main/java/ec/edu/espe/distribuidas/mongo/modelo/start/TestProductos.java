@@ -22,11 +22,11 @@ public class TestProductos {
 		Producto productos = new Producto();
 		PersistenceManager persistence = new PersistenceManager();
 
-		productos.setNombre("Mermelada");
-		productos.setDetalle("Mora 200g");
-                productos.setValor_Unitario(2.25f);
-                productos.setCantidad(1);
-                productos.setValor_Total(2.25f);
+//		productos.setNombre("Mermelada");
+//		productos.setDetalle("Mora 200g");
+//                productos.setValor_Unitario(2.25f);
+//                productos.setCantidad(1);
+//                productos.setValor_Total(2.25f);
 		
 		
 		persistence.context().save(productos);

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facturacion</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="estilo.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="formFactura">
+            <p:stack  icon="/resources/img/maleta.png" expanded="true">
+                <p:menuitem value="Reporte 1" icon="/resources/img/reporte.png" url="#"/>
+                <p:menuitem value="Reporte 2" icon="/resources/img/reporte.png" url="#"/>
+                <p:menuitem value="Factura" icon="/resources/img/factura.png" url="#"/>
+            </p:stack>
+            <p:growl id="growl" showDetail="true" sticky="true" />  
+            <div style="text-align: center">
+                <p:panel header="Factura" styleClass="cuerpoFactura">
+                    <div style="text-align: left">
+                        <p:outputLabel value="Cedula:  "/>
+                        <p:inputText/>
+                        <p:outputLabel value="  "/>
+                        <p:commandButton actionListener="#{facturaMb.buscarCliente()}" value="Buscar" icon="ui-icon-search" update="detalleCliente,growl"/>
+                    </div>
+
+                    <p:spacer height="10"/>
+
+                    <p:panel id="detalleCliente"  styleClass="detalleCliente"  >
+                        <p:panelGrid columns="4" styleClass="panelNoBorder" >
+                            <p:outputLabel value="Nombre:"/>
+                            <p:inputText value="#{facturaMb.cliente.nombre}"/>
+
+                            <p:outputLabel value="Genero:"/>
+                            <p:inputText value="#{facturaMb.cliente.genero}"/>
+
+                            <p:outputLabel value="Telefono:"/>
+                            <p:inputText value="#{facturaMb.cliente.telefono}"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+
+                    <p:panel id="detalleProducto"  styleClass="detalleCliente" header="AgregarProducto"  >
+                        <p:panelGrid columns="10" styleClass="panelNoBorder">
+                            <p:outputLabel value="Codigo"/>
+                            <p:inputText  style="width: 80px" />
+                            <p:commandButton actionListener="#{facturaMb.buscarProducto()}" icon="ui-icon-search" update="detalleProducto,growl"/>
+
+                            <p:outputLabel value="Nombre"/>
+                            <p:inputText style="width: 90px;" value="#{facturaMb.producto.nombre}" readonly="true"  />
+
+                            <p:outputLabel value="Precio"/>
+                            <p:inputText style="width: 50px" value="#{facturaMb.producto.precio}" readonly="true" />
+
+                            <p:outputLabel value="Cantidad"/>
+                            <p:inputText style="width: 30px" value="#{facturaMb.cantidadProducto}"  />
+
+                            <p:commandButton  icon="ui-icon-plusthick" actionListener="#{facturaMb.agregarDetalle()}" update="tablaDetalle,totales,growl"/>
+                        </p:panelGrid>
+                    </p:panel>
+
+                    <p:spacer width="15px"/>
+
+                    <p:dataTable id="tablaDetalle" style="width: 100%" var="detalle" value="#{facturaMb.factura.detalles}" >
+                        <p:column headerText="Codigo">
+                            <h:outputText value="#{detalle.producto.codigo}" />
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{detalle.producto.nombre}" />
+                        </p:column>
+
+                        <p:column headerText="P.Unitario">
+                            <h:outputText value="#{detalle.producto.precio}" />
+                        </p:column>
+
+                        <p:column headerText="Cantidad">
+                            <h:outputText value="#{detalle.cantidad}" />
+                        </p:column>
+
+
+                    </p:dataTable>
+
+                    <div style="height: 130px; text-align:center">
+
+                        <p:panel id="totales" style="float: right;" styleClass="panelNoBorder">
+                            <p:panelGrid columns="2"  styleClass="panelNoBorder">
+                                <p:outputLabel value="SubTotal"/>
+                                <p:inputText value="#{facturaMb.factura.total}" />
+
+                                <p:outputLabel value="Iva"/>
+                                <p:inputText value="#{facturaMb.iva}" />
+
+                                <p:outputLabel value="Total"/>
+                                <p:inputText value="#{facturaMb.total}" />
+                            </p:panelGrid>
+
+                        </p:panel>
+                    </div>
+                </p:panel>
+                <p:spacer height="10px"/>
+                <div >
+                    <p:commandButton actionListener="#{facturaMb.facturar()}" style="font-size: 16px; margin: 10px;background-color: azure;background-image: none" value="Facturar" update="growl"/>
+                    <p:commandButton actionListener="#{facturaMb.cancelar()}" style="font-size: 16px; margin: 10px;background-color: gold;background-image: none" value="Cancelar" update="formFactura"/>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+
+</html>
